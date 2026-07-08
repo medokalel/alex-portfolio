@@ -1,0 +1,119 @@
+.navbar {
+  background: #080C18;
+  padding: 15px 0;
+  transition: all 0.3s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+  /* Fixed Position */
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.scrolled {
+  background: rgba(15, 23, 42, 0.98) !important;
+  backdrop-filter: blur(10px);
+  padding: 10px 0;
+}
+
+.logo {
+  color: #60a5fa !important;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  font-family: 'Courier New', monospace;
+  z-index: 1001;  /* ← فوق الـ menu */
+  position: relative;
+}
+
+.arrow {
+  color: #22c55e;
+  margin-right: 5px;
+}
+
+/* Toggle Button */
+.toggleBtn {
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  padding: 8px 12px !important;
+  z-index: 1001;  /* ← فوق الـ menu */
+  position: relative;
+}
+
+.toggleBtn:focus {
+  box-shadow: none !important;
+}
+
+/* Nav Links */
+.navLink {
+  color: #94a3b8 !important;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin: 0 10px;
+  transition: color 0.3s;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navLink:hover {
+  color: #e2e8f0 !important;
+}
+
+/* Hire Me Button */
+.hireBtn {
+  background: #3b82f6;
+  color: #fff !important;
+  padding: 8px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.3s;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: inline-block;
+}
+
+.hireBtn:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+/* Mobile Menu - مهم جداً */
+@media (max-width: 991px) {
+  .navbar-collapse {
+    position: fixed;  /* ← ثابت مش absolute */
+    top: 60px;        /* ← تحت الـ navbar */
+    left: 0;
+    right: 0;
+    background: rgba(15, 23, 42, 0.98) !important;  /* ← خلفية غامقة */
+    backdrop-filter: blur(20px);  /* ← blur قوي */
+    padding: 20px;
+    border-radius: 0 0 16px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: none;
+    z-index: 999;  /* ← تحت الـ logo والـ toggle */
+    max-height: calc(100vh - 60px);  /* ← ميعديش ارتفاع الشاشة */
+    overflow-y: auto;  /* ← scroll لو المحتوى كتير */
+  }
+  
+  .navLink {
+    padding: 12px 0 !important;
+    margin: 0;
+    text-align: center;
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .navLink:last-child {
+    border-bottom: none;
+  }
+  
+  /* Hire Me في الموبايل */
+  .hireBtn {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+}
