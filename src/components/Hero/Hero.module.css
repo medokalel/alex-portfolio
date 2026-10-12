@@ -88,7 +88,7 @@
 }
 
 .btnPrimary {
-  background: #3b82f6;
+  background: #2563eb;
   color: #fff;
   padding: 12px 24px;
   border-radius: 10px;
@@ -147,7 +147,7 @@
 
 .statLabel {
   font-size: 0.85rem;
-  color: #64748b;
+  color: #94a3b8;
   margin-top: 5px;
 }
 
@@ -294,7 +294,7 @@
 }
 
 .lineNum {
-  color: #475569;
+  color: #94a3b8;
   min-width: 25px;
   text-align: right;
   user-select: none;
@@ -309,7 +309,7 @@
 
 /* Syntax Highlighting - ألوان واضحة */
 .comment {
-  color: #64748b !important;
+  color: #94a3b8 !important;
 }
 
 .code {

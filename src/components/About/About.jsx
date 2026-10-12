@@ -1,27 +1,26 @@
-import React from 'react';
 import styles from './About.module.css';
-import aboutImg from '../../assets/images/pngtree-empty-computer-desk-with-wooden-table-and-supplies-for-montage-photo-image_50050390.png'; // حط صورتك هنا
+import aboutImg from '../../assets/images/desk.webp';
 
 const skills = [
-  { name: 'Python / FastAPI', percent: 95, color: '#3b82f6' },
+  { name: 'Python / FastAPI', percent: 95, color: '#60a5fa' },
   { name: 'Node.js / TypeScript', percent: 92, color: '#22c55e' },
   { name: 'Go', percent: 78, color: '#06b6d4' },
-  { name: 'PostgreSQL / MySQL', percent: 90, color: '#6366f1' },
-  { name: 'Redis / Caching', percent: 87, color: '#ef4444' },
-  { name: 'Docker / Kubernetes', percent: 84, color: '#3b82f6' },
+  { name: 'PostgreSQL / MySQL', percent: 90, color: '#818cf8' },
+  { name: 'Redis / Caching', percent: 87, color: '#f87171' },
+  { name: 'Docker / Kubernetes', percent: 84, color: '#60a5fa' },
   { name: 'AWS / GCP', percent: 80, color: '#f59e0b' },
 ];
 
 const stats = [
-  { num: '5+', label: 'Years', color: '#3b82f6' },
+  { num: '5+', label: 'Years', color: '#60a5fa' },
   { num: '50+', label: 'APIs', color: '#22c55e' },
-  { num: '99.9%', label: 'Uptime', color: '#a78bfa' },
+  { num: '99.9%', label: 'Uptime', color: '#c4b5fd' },
 ];
 
 const tags = [
-  { label: 'Server', color: '#3b82f6' },
+  { label: 'Server', color: '#60a5fa' },
   { label: 'Database', color: '#22c55e' },
-  { label: 'Cloud', color: '#a78bfa' },
+  { label: 'Cloud', color: '#c4b5fd' },
 ];
 
 const About = () => {
@@ -36,11 +35,11 @@ const About = () => {
           The engineer behind the <span className={styles.uptime}>uptime.</span>
         </h2>
         
-        <div className="row g-5 align-items-start">
+        <div className="row g-4 align-items-start">
           {/* Left - Image & Stats */}
           <div className="col-lg-5">
             <div className={styles.imageWrapper}>
-              <img src={aboutImg} alt="Alex Chen working" className={styles.aboutImg} />
+              <img src={aboutImg} alt="A desk with a computer and work supplies" className={styles.aboutImg} />
               
               {/* Floating Tags */}
               <div className={styles.tags}>
@@ -102,11 +101,6 @@ const About = () => {
                 ))}
               </div>
               
-              {/* Download Button */}
-              <a href="#" download className={styles.downloadBtn}>
-                <i className="fas fa-download"></i>
-                Download Resume
-              </a>
             </div>
           </div>
         </div>

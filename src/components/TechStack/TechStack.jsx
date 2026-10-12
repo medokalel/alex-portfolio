@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './TechStack.module.css';
 
 const categories = [
@@ -6,13 +5,13 @@ const categories = [
     id: 1,
     title: 'Languages',
     icon: 'fa-solid fa-terminal',
-    iconColor: '#3b82f6',
+    iconColor: '#60a5fa',
     items: [
-      { name: 'Python', years: '5yrs', color: '#3b82f6' },
-      { name: 'TypeScript', years: '5yrs', color: '#3b82f6' },
-      { name: 'Go', years: '3yrs', color: '#3b82f6' },
-      { name: 'Java', years: '4yrs', color: '#3b82f6' },
-      { name: 'Bash', years: '5yrs', color: '#3b82f6' }
+      { name: 'Python', years: '5yrs', color: '#60a5fa' },
+      { name: 'TypeScript', years: '5yrs', color: '#60a5fa' },
+      { name: 'Go', years: '3yrs', color: '#60a5fa' },
+      { name: 'Java', years: '4yrs', color: '#60a5fa' },
+      { name: 'Bash', years: '5yrs', color: '#60a5fa' }
     ]
   },
   {
@@ -32,13 +31,13 @@ const categories = [
     id: 3,
     title: 'Infrastructure',
     icon: 'fa-solid fa-cloud',
-    iconColor: '#a78bfa',
+    iconColor: '#c4b5fd',
     items: [
-      { name: 'Docker', years: '5yrs', color: '#a78bfa' },
-      { name: 'Kubernetes', years: '3yrs', color: '#a78bfa' },
-      { name: 'AWS', years: '4yrs', color: '#a78bfa' },
-      { name: 'Terraform', years: '3yrs', color: '#a78bfa' },
-      { name: 'GitHub Actions', years: '4yrs', color: '#a78bfa' }
+      { name: 'Docker', years: '5yrs', color: '#c4b5fd' },
+      { name: 'Kubernetes', years: '3yrs', color: '#c4b5fd' },
+      { name: 'AWS', years: '4yrs', color: '#c4b5fd' },
+      { name: 'Terraform', years: '3yrs', color: '#c4b5fd' },
+      { name: 'GitHub Actions', years: '4yrs', color: '#c4b5fd' }
     ]
   },
   {

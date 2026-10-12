@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './Navbar.module.css';
 
 const Navbar = () => {
@@ -26,7 +26,7 @@ const Navbar = () => {
   return (
     <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''} navbar navbar-expand-lg`}>
       <div className="container">
-        <a className={styles.logo} href="#">
+        <a className={styles.logo} href="#home">
           <span className={styles.arrow}>{'>'}</span> alex.dev
         </a>
         

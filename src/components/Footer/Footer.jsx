@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './Footer.module.css';
 
 const Footer = () => {
@@ -12,11 +11,11 @@ const Footer = () => {
         <div className={styles.content}>
           {/* Left */}
           <div className={styles.left}>
-            <a href="#" className={styles.logo}>
+            <a href="#home" className={styles.logo}>
               <span className={styles.arrow}>{'>'}</span> alex.dev
             </a>
             <p className={styles.copyright}>
-              © 2025 Alex Chen. Built with React + TypeScript + Tailwind.
+              Sample content · UI by Mohamed Khalil · Built with React, Vite and Bootstrap.
             </p>
           </div>
           
@@ -24,9 +23,9 @@ const Footer = () => {
           <div className={styles.right}>
             <span className={styles.status}>
               <span className={styles.statusDot}></span>
-              All systems operational
+              All systems operational (demo)
             </span>
-            <button onClick={scrollToTop} className={styles.scrollTop}>
+            <button onClick={scrollToTop} className={styles.scrollTop} aria-label="Back to top">
               <i className="fas fa-arrow-up"></i>
             </button>
           </div>

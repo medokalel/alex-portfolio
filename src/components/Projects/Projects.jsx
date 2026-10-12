@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './Projects.module.css';
-import projectImg from '../../assets/images/pngtree-empty-computer-desk-with-wooden-table-and-supplies-for-montage-photo-image_50050390.png'
 
 const categories = ['All', 'APIs', 'Microservices', 'Databases', 'DevOps'];
 
@@ -9,88 +8,77 @@ const projects = [
     id: 1,
     title: 'GraphQL API Gateway',
     description: 'Federated GraphQL gateway handling 2M+ requests/day with real-time subscriptions, rate limiting, and distributed tracing.',
-    image: projectImg,
     category: 'APIs',
-    tags: ['Node.js', 'GraphQL', 'Redis', 'PostgreSQL'],
-    github: '#',
-    live: '#'
+    tags: ['Node.js', 'GraphQL', 'Redis', 'PostgreSQL']
   },
   {
     id: 2,
     title: 'Event-Driven Order System',
     description: 'CQRS + event sourcing architecture for e-commerce orders. Kafka-backed, 99.99% durability, idempotent consumers.',
-    image: projectImg,
     category: 'Microservices',
-    tags: ['Go', 'Kafka', 'PostgreSQL', 'Docker'],
-    github: '#',
-    live: '#'
+    tags: ['Go', 'Kafka', 'PostgreSQL', 'Docker']
   },
   {
     id: 3,
     title: 'TimeSeries Analytics DB',
     description: 'Custom time-series storage layer on top of PostgreSQL with hypertable partitioning, 10x query improvement over naive schema.',
-    image: projectImg,
     category: 'Databases',
-    tags: ['Python', 'TimescaleDB', 'Redis', 'FastAPI'],
-    github: '#',
-    live: '#'
+    tags: ['Python', 'TimescaleDB', 'Redis', 'FastAPI']
   },
   {
     id: 4,
     title: 'K8s Multi-Tenant Platform',
     description: 'Self-service Kubernetes namespace provisioning with RBAC, network policies, and cost allocation for 50+ engineering teams.',
-    image: projectImg,
     category: 'DevOps',
-    tags: ['Kubernetes', 'Terraform', 'Go', 'Prometheus'],
-    github: '#',
-    live: '#'
+    tags: ['Kubernetes', 'Terraform', 'Go', 'Prometheus']
   },
   {
     id: 5,
     title: 'Auth Service (OIDC/OAuth2)',
     description: 'Production-grade identity service with PKCE, refresh token rotation, and SSO integration for 12 internal applications.',
-    image: projectImg,
     category: 'APIs',
-    tags: ['Node.js', 'TypeScript', 'Redis', 'JWT'],
-    github: '#',
-    live: '#'
+    tags: ['Node.js', 'TypeScript', 'Redis', 'JWT']
   },
   {
     id: 6,
     title: 'Database Migration CLI',
     description: 'Zero-downtime schema migration tool with rollback support, dry-run mode, and automated compatibility checks.',
-    image: projectImg,
     category: 'Databases',
-    tags: ['Go', 'PostgreSQL', 'CLI', 'Docker'],
-    github: '#',
-    live: '#'
+    tags: ['Go', 'PostgreSQL', 'CLI', 'Docker']
   }
 ];
 
+const categoryIcons = {
+  APIs: 'fa-solid fa-plug',
+  Microservices: 'fa-solid fa-cubes',
+  Databases: 'fa-solid fa-database',
+  DevOps: 'fa-solid fa-server'
+};
+
 const categoryColors = {
-  APIs: '#3b82f6',
+  APIs: '#60a5fa',
   Microservices: '#22c55e',
-  Databases: '#a78bfa',
+  Databases: '#c4b5fd',
   DevOps: '#f59e0b'
 };
 
 const tagColors = {
-  'Node.js': '#3b82f6',
-  'GraphQL': '#e535ab',
-  'Redis': '#ef4444',
-  'PostgreSQL': '#6366f1',
+  'Node.js': '#60a5fa',
+  'GraphQL': '#f472b6',
+  'Redis': '#f87171',
+  'PostgreSQL': '#818cf8',
   'Go': '#06b6d4',
   'Kafka': '#22c55e',
-  'Docker': '#3b82f6',
+  'Docker': '#60a5fa',
   'Python': '#f59e0b',
-  'TimescaleDB': '#ef4444',
+  'TimescaleDB': '#f87171',
   'FastAPI': '#22c55e',
-  'Kubernetes': '#3b82f6',
-  'Terraform': '#a78bfa',
-  'TypeScript': '#3b82f6',
+  'Kubernetes': '#60a5fa',
+  'Terraform': '#c4b5fd',
+  'TypeScript': '#60a5fa',
   'JWT': '#f59e0b',
-  'CLI': '#64748b',
-  'Prometheus': '#ef4444'
+  'CLI': '#94a3b8',
+  'Prometheus': '#f87171'
 };
 
 const Projects = () => {
@@ -129,29 +117,20 @@ const Projects = () => {
           {filteredProjects.map((project) => (
             <div className="col-md-6 col-lg-4" key={project.id}>
               <div className={styles.card}>
-                {/* Image */}
+                {/* Sample projects have no screenshots or links: a category icon stands in for the image */}
                 <div className={styles.imageWrapper}>
-                  <img src={project.image} alt={project.title} className={styles.image} />
-                  
-                  {/* Overlay */}
-                  <div className={styles.overlay}>
-                    <a href={project.github} className={styles.iconBtn} target="_blank" rel="noopener noreferrer">
-                      <i className="fab fa-github"></i>
-                    </a>
-                    <a href={project.live} className={styles.iconBtn} target="_blank" rel="noopener noreferrer">
-                      <i className="fas fa-external-link-alt"></i>
-                    </a>
+                  <div className={styles.placeholder} style={{ color: categoryColors[project.category] }} aria-hidden="true">
+                    <i className={categoryIcons[project.category]}></i>
                   </div>
-                  
-                  {/* Category Badge */}
-                  <span 
+                  <span
                     className={styles.categoryBadge}
                     style={{ color: categoryColors[project.category] }}
                   >
                     {project.category}
                   </span>
+                  <span className={styles.sampleBadge}>Sample project</span>
                 </div>
-                
+
                 {/* Content */}
                 <div className={styles.content}>
                   <h3 className={styles.cardTitle}>{project.title}</h3>

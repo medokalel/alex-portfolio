@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './Experience.module.css';
 
 const experiences = [
@@ -6,12 +5,12 @@ const experiences = [
     id: 1,
     title: 'Senior Backend Engineer',
     type: 'Full-time',
-    typeColor: '#3b82f6',
-    company: 'Stripe',
-    companyColor: '#3b82f6',
+    typeColor: '#60a5fa',
+    company: 'Northwind Payments',
+    companyColor: '#60a5fa',
     period: '2022 – Present',
     icon: 'fa-solid fa-briefcase',
-    iconColor: '#3b82f6',
+    iconColor: '#60a5fa',
     points: [
       'Led migration of payment routing service from monolith to microservices (30% latency reduction)',
       'Designed idempotency layer handling 8M transactions/day',
@@ -22,16 +21,16 @@ const experiences = [
     id: 2,
     title: 'Backend Engineer',
     type: 'Full-time',
-    typeColor: '#3b82f6',
-    company: 'Vercel',
-    companyColor: '#3b82f6',
+    typeColor: '#60a5fa',
+    company: 'Edgewise Cloud',
+    companyColor: '#60a5fa',
     period: '2020 – 2022',
     icon: 'fa-solid fa-briefcase',
-    iconColor: '#3b82f6',
+    iconColor: '#60a5fa',
     points: [
       'Built edge function execution runtime (Node.js + Go)',
       'Reduced cold-start time by 60% via pre-warming strategy',
-      'Shipped deployment rollback API used by 200k+ teams'
+      'Shipped a deployment rollback API used by 200k+ teams'
     ]
   },
   {
@@ -54,14 +53,14 @@ const experiences = [
     id: 4,
     title: 'Backend Contributor',
     type: 'Open Source',
-    typeColor: '#a78bfa',
+    typeColor: '#c4b5fd',
     company: 'Open Source',
-    companyColor: '#a78bfa',
+    companyColor: '#c4b5fd',
     period: '2018 – Present',
     icon: 'fa-solid fa-code-branch',
-    iconColor: '#a78bfa',
+    iconColor: '#c4b5fd',
     points: [
-      'Maintainer of pg-migrate (4.2k GitHub stars)',
+      'Maintainer of an open-source migration tool (4.2k GitHub stars)',
       'Contributed to FastAPI, Express, and Kubernetes ecosystem',
       'Authored 15+ technical articles on distributed systems'
     ]

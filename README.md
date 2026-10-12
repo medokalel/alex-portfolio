@@ -1,16 +1,46 @@
-# React + Vite
+# Developer Portfolio Template
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A dark, single-page developer portfolio template with an animated code-editor hero, a filterable project grid, a tech-stack section and an experience timeline. Built with React and Vite while practising component layout, CSS modules and small interactions.
 
-Currently, two official plugins are available:
+**Live demo:** https://alex-portfolio-weld.vercel.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+> **All content is sample content.** "Alex Chen", the companies, numbers, projects and contact details are made up to show how the design looks when filled in. Nothing here describes a real person's career. The interface and code were built by [Mohamed Khalil](https://github.com/medokalel).
 
-## React Compiler
+## What it includes
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Hero with a typing animation of a code editor (finished text is shown straight away when the visitor prefers reduced motion)
+- About section with skill bars and stats
+- Project cards with category filters
+- Tech stack grid and experience timeline
+- Responsive layout, sticky navbar, skip link, dismissible "demo template" notice
 
-## Expanding the ESLint configuration
+## Built with
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+React 19, Vite, React Router, Bootstrap 5 (grid and utilities) and Font Awesome, plus CSS modules for each section.
+
+## Project structure
+
+```
+src/
+  components/   one folder per section (component + CSS module)
+  assets/       images
+```
+
+## Run locally
+
+```bash
+git clone https://github.com/medokalel/alex-portfolio.git
+cd alex-portfolio
+npm install
+npm run dev
+```
+
+Other scripts: `npm run build`, `npm run preview`, `npm run lint`.
+
+## Using it for a real portfolio
+
+Replace the sample data at the top of each component (`Hero`, `About`, `Projects`, `TechStack`, `Experience`, `Contact`) and remove the `DemoBanner` from `Layout.jsx`. Add real project links and screenshots, and a contact form or email link of your own.
+
+## Author
+
+Mohamed Khalil · [GitHub](https://github.com/medokalel) · [LinkedIn](https://www.linkedin.com/in/mohamed-khalel1/)

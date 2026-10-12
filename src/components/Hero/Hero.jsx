@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './Hero.module.css';
 
 const codeContent = [
@@ -22,13 +22,13 @@ const codeContent = [
 
 const floatingTags = [
   { label: 'Node.js', color: '#22c55e', delay: '0s' },
-  { label: 'TypeScript', color: '#3b82f6', delay: '0.5s' },
-  { label: 'Python', color: '#6366f1', delay: '1s' },
+  { label: 'TypeScript', color: '#60a5fa', delay: '0.5s' },
+  { label: 'Python', color: '#818cf8', delay: '1s' },
   { label: 'AWS', color: '#f59e0b', delay: '1.5s' },
   { label: 'PostgreSQL', color: '#8b5cf6', delay: '2s' },
-  { label: 'Redis', color: '#ef4444', delay: '2.5s' },
-  { label: 'Docker', color: '#3b82f6', delay: '3s' },
-  { label: 'Kubernetes', color: '#6366f1', delay: '3.5s' },
+  { label: 'Redis', color: '#f87171', delay: '2.5s' },
+  { label: 'Docker', color: '#60a5fa', delay: '3s' },
+  { label: 'Kubernetes', color: '#818cf8', delay: '3.5s' },
 ];
 
 const stats = [
@@ -37,52 +37,47 @@ const stats = [
   { num: '99.9%', label: 'Avg Uptime' },
 ];
 
+const CHAR_MS = 25;       // time per typed character
+const LINE_PAUSE = 6;     // extra "ticks" of pause at the end of each line
+
+const prefersReducedMotion = () =>
+  typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Total ticks needed to type everything (each character is one tick, plus a pause per line).
+const TOTAL_TICKS = codeContent.reduce((sum, line) => sum + line.text.length + LINE_PAUSE, 0);
+
+/** Which lines are visible, and how much of the current one is typed, after `ticks` ticks. */
+function typedLines(ticks) {
+  let remaining = ticks;
+  return codeContent.map((line) => {
+    if (remaining <= 0) return { ...line, display: '', visible: false };
+    const chars = Math.min(line.text.length, remaining);
+    remaining -= line.text.length + LINE_PAUSE;
+    return { ...line, display: line.text.substring(0, chars), visible: true };
+  });
+}
+
 const Hero = () => {
-  const [displayedLines, setDisplayedLines] = useState([]);
-  const [currentLine, setCurrentLine] = useState(0);
-  const [currentChar, setCurrentChar] = useState(0);
+  // One counter drives the typing, so there is no state update inside an effect body.
+  // Visitors who prefer reduced motion get the finished code straight away.
+  const [ticks, setTicks] = useState(() => (prefersReducedMotion() ? TOTAL_TICKS : 0));
   const [showCursor, setShowCursor] = useState(true);
+  const done = ticks >= TOTAL_TICKS;
 
-  // Typing Animation - حرف حرف
   useEffect(() => {
-    if (currentLine >= codeContent.length) return;
+    if (done) return;
+    const timer = setInterval(() => setTicks((t) => t + 1), CHAR_MS);
+    return () => clearInterval(timer);
+  }, [done]);
 
-    const line = codeContent[currentLine];
-    
-    if (line.type === 'empty') {
-      setDisplayedLines(prev => [...prev, { ...line, display: '' }]);
-      setCurrentLine(prev => prev + 1);
-      setCurrentChar(0);
-      return;
-    }
-
-    if (currentChar < line.text.length) {
-      const timer = setTimeout(() => {
-        setDisplayedLines(prev => {
-          const newLines = [...prev];
-          newLines[currentLine] = {
-            ...line,
-            display: line.text.substring(0, currentChar + 1)
-          };
-          return newLines;
-        });
-        setCurrentChar(prev => prev + 1);
-      }, 25);
-      return () => clearTimeout(timer);
-    } else {
-      const timer = setTimeout(() => {
-        setCurrentLine(prev => prev + 1);
-        setCurrentChar(0);
-      }, 150);
-      return () => clearTimeout(timer);
-    }
-  }, [currentLine, currentChar]);
-
-  // Cursor Blink
   useEffect(() => {
-    const timer = setInterval(() => setShowCursor(prev => !prev), 530);
+    if (prefersReducedMotion()) return;
+    const timer = setInterval(() => setShowCursor((prev) => !prev), 530);
     return () => clearInterval(timer);
   }, []);
+
+  const lines = typedLines(ticks);
+  const currentLine = done ? -1 : lines.reduce((last, line, i) => (line.visible ? i : last), 0);
 
   const renderLineText = (line) => {
     if (line.type === 'empty') return null;
@@ -154,7 +149,7 @@ const Hero = () => {
           <div className="col-lg-6">
             <div className={styles.badge}>
               <span className={styles.dot}></span>
-              Available for new opportunities
+              Demo template · sample content
             </div>
             
             <h1 className={styles.title}>
@@ -171,8 +166,8 @@ const Hero = () => {
               <a href="#projects" className={styles.btnPrimary}>
                 View Projects <i className="fas fa-chevron-right ms-2"></i>
               </a>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className={styles.btnOutline}>
-                <i className="fab fa-github me-2"></i> GitHub
+              <a href="https://github.com/medokalel/alex-portfolio" target="_blank" rel="noopener noreferrer" className={styles.btnOutline}>
+                <i className="fab fa-github me-2"></i> Source code
               </a>
             </div>
             
@@ -188,7 +183,7 @@ const Hero = () => {
           
           {/* Right - Code Editor */}
           <div className="col-lg-6 d-none d-lg-block">
-            <div className={styles.editorContainer}>
+            <div className={styles.editorContainer} aria-hidden="true">
               {/* Floating Tags - حول الـ editor */}
               <div className={styles.tagsContainer}>
                 {floatingTags.map((tag, i) => (
@@ -220,25 +215,20 @@ const Hero = () => {
                 
                 {/* Code Content */}
                 <div className={styles.codeContent}>
-                  {codeContent.map((line, i) => {
-                    const isVisible = i <= currentLine;
-                    const isCurrentLine = i === currentLine && i < codeContent.length;
-                    
-                    return (
-                      <div 
-                        key={i} 
-                        className={`${styles.codeLine} ${!isVisible ? styles.hidden : ''}`}
-                      >
-                        <span className={styles.lineNum}>{line.num}</span>
-                        <span className={styles.lineText}>
-                          {isVisible && renderLineText(displayedLines[i] || line)}
-                          {isCurrentLine && showCursor && (
-                            <span className={styles.cursor}>|</span>
-                          )}
-                        </span>
-                      </div>
-                    );
-                  })}
+                  {lines.map((line, i) => (
+                    <div
+                      key={i}
+                      className={`${styles.codeLine} ${!line.visible ? styles.hidden : ''}`}
+                    >
+                      <span className={styles.lineNum}>{line.num}</span>
+                      <span className={styles.lineText}>
+                        {line.visible && renderLineText(line)}
+                        {i === currentLine && showCursor && (
+                          <span className={styles.cursor}>|</span>
+                        )}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
