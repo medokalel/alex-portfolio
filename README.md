@@ -43,4 +43,4 @@ Replace the sample data at the top of each component (`Hero`, `About`, `Projects
 
 ## Author
 
-Mohamed Khalil · [GitHub](https://github.com/medokalel) · [LinkedIn](https://www.linkedin.com/in/mohamed-khalel1/)
+Mohamed Khalil · [GitHub](https://github.com/medokalel) · [LinkedIn](https://www.linkedin.com/in/mohamed-khalil1/)

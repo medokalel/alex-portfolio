@@ -9,8 +9,8 @@ const links = [
   },
   {
     icon: 'fa-brands fa-linkedin-in',
-    label: 'linkedin.com/in/mohamed-khalel1',
-    href: 'https://www.linkedin.com/in/mohamed-khalel1/',
+    label: 'linkedin.com/in/mohamed-khalil1',
+    href: 'https://www.linkedin.com/in/mohamed-khalil1/',
     color: '#60a5fa',
   },
   {
